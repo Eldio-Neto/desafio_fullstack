@@ -22,9 +22,12 @@ const switchToTeam = (team) => {
     });
 };
 
+console.log(route('menu'))
+
 const logout = () => {
     router.post(route('logout'));
 };
+
 </script>
 
 <template>
@@ -44,6 +47,9 @@ const logout = () => {
                                 <Link :href="route('dashboard')">
                                     <ApplicationMark class="block h-9 w-auto" />
                                 </Link>
+                                <Link :href="route('dashboard')">
+                                    <ApplicationMark class="block h-9 w-auto" />
+                                </Link>
                             </div>
 
                             <!-- Navigation Links -->
@@ -51,7 +57,13 @@ const logout = () => {
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
+                                <NavLink :href="route('menu')" :active="route().current('menu')">
+                                    lalala
+                                </NavLink>
                             </div>
+
+                            
+                            
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
