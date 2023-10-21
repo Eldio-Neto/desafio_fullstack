@@ -11,7 +11,7 @@ use Inertia\Inertia;
 class AdvertiseController extends Controller
 {
 
-    public function store(Request $req)
+    public function  store2(Request $req)
     {
         Advertise::create([
             "title" => $req->title,
@@ -29,5 +29,30 @@ class AdvertiseController extends Controller
     {
         $MyPosts = Advertise::where('user_id', '=', Auth::id())->get();
         return Inertia('Dashboard', compact('MyPosts'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            // suas regras de validação aqui
+        ]);
+
+        if ($request->hasFile('image')) {
+            // Salva a imagem no disco público (pasta storage/app/public/images)
+            $imagePath = "storage/app/public/" . $request->file('image')->store('images', 'public');
+            // $imagePath = 'https://google.com/google.jpg';
+        }
+
+        Advertise::create([
+            "title" => $request->input('title'),
+            "slug" =>  $imagePath,
+            "price" => $request->input('price'),
+            "expires_at" => $request->input('expires'),
+            "description" => $request->input('desc'),
+            "user_id" => Auth::id(),
+            "category_id" => '1'
+        ]);
+
+        return redirect('/dashboard'); //response()->json(['message' => 'Anúncio criado com sucesso']);
     }
 }

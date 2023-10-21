@@ -21,11 +21,13 @@ defineProps({
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     <div v-for="post in MyPosts" :key="post.id">
-                        <CardAd :title="post.title" :description="post.description" :date="post.expires_at"
-                            :url="'https://google.com/google.jpg'" />
+                        <CardAd :title="post.title" :description="post.description" :date="post.expires_at" :url="post.slug"
+                            :postId="post.id" />
                     </div>
                 </div>
             </div>
         </div>
+
+
     </AppLayout>
 </template>

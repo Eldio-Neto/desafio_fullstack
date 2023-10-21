@@ -26,8 +26,9 @@
 </style>
 
 <script>
-// Importe o Vue Router
+
 import { Head, Link, router } from '@inertiajs/vue3';
+
 
 export default {
     props: {
