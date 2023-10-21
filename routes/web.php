@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdvertiseController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,7 +33,6 @@ Route::middleware([
     Route::get('/menu', function () {
         return Inertia::render('Menu');
     })->name('menu');
-
 });
 
 Route::middleware([
@@ -40,10 +40,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return Inertia::render('Dashboard');
+    // })->name('dashboard');
 
+    Route::get('/dashboard', [AdvertiseController::class, 'MyAdvertyse'])->name('dashboard');
 });
 
 
@@ -56,4 +57,5 @@ Route::middleware([
         return Inertia::render('NewAdvertise');
     })->name('newAdvertise');
 
+    Route::post('/newAdvertise', [AdvertiseController::class, 'store'])->name('newAdvertise');
 });
