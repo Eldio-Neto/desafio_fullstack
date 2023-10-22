@@ -58,4 +58,10 @@ Route::middleware([
     })->name('newAdvertise');
 
     Route::post('/newAdvertise', [AdvertiseController::class, 'store'])->name('newAdvertise');
+    Route::get('/singleAd/{id}', [AdvertiseController::class, 'showSinglePost'])->name('singleAd');
+    Route::get('/advertise/editAd/{id}', [AdvertiseController::class, 'editAd'])->name('edit');
+    
+    /* Usando Post para atualizar pois o laravel não recebe formdata via PUT */
+    Route::post('/advertise/editAd/{id}', [AdvertiseController::class, 'saveEditAd'])->name('editad');
+
 });

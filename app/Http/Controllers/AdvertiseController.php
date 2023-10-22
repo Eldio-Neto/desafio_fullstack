@@ -11,19 +11,6 @@ use Inertia\Inertia;
 class AdvertiseController extends Controller
 {
 
-    public function  store2(Request $req)
-    {
-        Advertise::create([
-            "title" => $req->title,
-            "slug" => ' ',
-            "price" => $req->price,
-            "expires_at" => $req->expires,
-            "description" => $req->desc,
-            "user_id" => Auth::id(),
-            "category_id" => '1'
-        ]);
-        return redirect('/dashboard');
-    }
 
     public function MyAdvertyse()
     {
@@ -38,9 +25,7 @@ class AdvertiseController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            // Salva a imagem no disco público (pasta storage/app/public/images)
-            $imagePath = "storage/app/public/" . $request->file('image')->store('images', 'public');
-            // $imagePath = 'https://google.com/google.jpg';
+           $imagePath = "storage/" . $request->file('image')->store('images', 'public');
         }
 
         Advertise::create([
@@ -53,6 +38,65 @@ class AdvertiseController extends Controller
             "category_id" => '1'
         ]);
 
-        return redirect('/dashboard'); //response()->json(['message' => 'Anúncio criado com sucesso']);
+        return redirect('/dashboard');
     }
+
+    public function showSinglePost ($id){
+        $singlepost = Advertise::where('id', $id)->first();
+
+        $canEdit = false;
+
+        if ($singlepost && $singlepost->user_id == Auth::id()) {
+            $canEdit = true;
+        }
+        $singlepost->slug = asset($singlepost->slug);
+
+        return Inertia::render('SingleAd', [
+            'singlepost' => $singlepost,
+            'canEdit' => $canEdit,
+        ]);
+    }
+
+    public function editAd($id){
+
+        $singlepost = Advertise::where('id', $id)->first();
+
+        if ($singlepost && $singlepost->user_id == Auth::id()) {    
+            $singlepost->slug = asset($singlepost->slug);       
+            
+            return Inertia('EditAdvertise', compact('singlepost'));
+        }
+
+        return redirect('/');
+    }
+
+    public function saveEditAd(Request $request, $id){
+
+        $singlepost = Advertise::where('id', $id)->first();
+
+        if ($singlepost && $singlepost->user_id == Auth::id()) {    
+            $singlepost->slug = asset($singlepost->slug);    
+               
+            if ($request->hasFile('image')) {
+                $imagePath = "storage/" . $request->file('image')->store('images', 'public');
+             }
+            return $request;
+        }
+
+        return redirect('/');
+    }
+
+    public function deleteAd($id){
+
+        $singlepost = Advertise::where('id', $id)->first();
+
+        if ($singlepost && $singlepost->user_id == Auth::id()) {           
+            return Inertia::render('EditAdvertise', [
+                'singlepost' => $singlepost
+            ]);
+        }
+
+        return redirect('/');
+    }
+
 }

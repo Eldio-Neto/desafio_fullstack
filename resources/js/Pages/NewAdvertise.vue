@@ -87,7 +87,6 @@ const getFile = (event) => {
 
 const submit = async () => {
     if (validateDate()) {
-        // const fileInput = document.querySelector('input[type="file"]');
 
         const formData = new FormData();
         formData.append('image', file);
@@ -193,10 +192,6 @@ export default {
                         </div>
                     </form>
 
-                    <div>
-                        <input type="file" name="file" multiple ref="files" />
-                        <button @click="sendFile">Send</button>
-                    </div>
                 </div>
             </div>
         </div>

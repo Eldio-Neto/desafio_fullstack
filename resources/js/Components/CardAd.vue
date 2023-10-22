@@ -1,7 +1,7 @@
 <template title="CardAd">
     <div @click="GoToSinglePost"
         class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <img :src="url" alt="">
+        <img :src="`${url}`" alt="" class="rounded-md w-full h-40 object-cover mb-4">
         <a>
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {{ title }}
@@ -13,6 +13,9 @@
         Valido até:
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
             {{ formatDate(date) }}
+        </p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            {{postId }}
         </p>
     </div>
 </template>
@@ -29,7 +32,6 @@
 
 import { Head, Link, router } from '@inertiajs/vue3';
 
-
 export default {
     props: {
         title: String,
@@ -40,8 +42,8 @@ export default {
     },
     methods: {
         GoToSinglePost() {
-            // Use o Vue Router para navegar para a rota singlepost/id
-            router.get(`/singlepost/${this.postId}`);
+
+            router.get(`/singleAd/${this.postId}`);
         },
         formatDate(timestamp) {
             const date = new Date(timestamp);
