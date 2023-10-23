@@ -22,7 +22,7 @@ git clone  https://github.com/Eldio-Neto/desafio_fullstack.git
 
 ## Rodando o Projeto
 
-1. Acessar para a pasta onde o projeto foi clonado</p>
+1. Acessar para a pasta onde o projeto foi clonado
    <p> ~ cd desafio_fullstack</p>
 
 2. Instalar dependencias do Projeto
