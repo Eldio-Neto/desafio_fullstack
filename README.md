@@ -22,29 +22,29 @@ git clone  https://github.com/Eldio-Neto/desafio_fullstack.git
 
 ## Rodando o Projeto
 
-1. Acessar para a pasta onde o projeto foi clonado
-    ~ cd desafio_fullstack
+1. Acessar para a pasta onde o projeto foi clonado</p>
+   <p> ~ cd desafio_fullstack
 
 2. Instalar dependencias do Projeto
-    ~ npm install && composer install
+    <p>~ npm install && composer install</p>
 
 3. Configurar o Env
-    Por padrão o projeto está com o env.example, basta copiar e renomear para .env.
-     ~ Alterar as informações do banco de dados e nome do schema 
-        ~ DB_DATABASE=desafio_fullstack
-        ~ DB_USERNAME=root
-        ~ DB_PASSWORD=123
+    <p>Por padrão o projeto está com o env.example, basta copiar e renomear para .env.</p>
+     <p>~ Alterar as informações do banco de dados e nome do schema </p>
+      <p>  ~ DB_DATABASE=desafio_fullstack</p>
+     <p>   ~ DB_USERNAME=root</p>
+      <p>  ~ DB_PASSWORD=123</p>
 
 4. Abrir um terminal e executar comandos para start do laravel
-    ~ cd desafio_fullstack 
-    ~ php artisan key:generate
-    ~ php artisan storage:link
-    ~ php artisan db:seed --class=CategorySeeder
-    ~ php artisan serve
+   <p> ~ cd desafio_fullstack </p>
+   <p> ~ php artisan key:generate</p>
+   <p> ~ php artisan storage:link</p>
+    <p>~ php artisan db:seed --class=CategorySeeder</p>
+    <p>~ php artisan serve</p>
 
 5. Abrir outro terminal e executar comandos para start do vue
-    ~ cd desafio_fullstack 
-    ~ npm run dev
+   <p> ~ cd desafio_fullstack </p>
+    <p>~ npm run dev</p>
 
 
 6. Acessar a link em que estiver rodando o laravel ex: (http://127.0.0.1:8000)
