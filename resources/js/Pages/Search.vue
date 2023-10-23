@@ -5,7 +5,7 @@ import SearchBar from '@/Components/SeachBar.vue'
 import pagination from '@/Components/Pagination.vue'
 
 defineProps({
-    posts: [],
+    posts: Object,
     term: String
 })
 
@@ -27,7 +27,7 @@ defineProps({
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     <div v-for="post in posts.data" :key="post.id">
                         <CardAd :title="post.title" :description="post.description" :date="post.expires_at" :url="post.slug"
-                            :postId="post.id" />
+                            :postId="post.id" :price="post.price" :category="post.category_name" />
                     </div>
                 </div>
                 <div class="mt-5 flex">

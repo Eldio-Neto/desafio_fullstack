@@ -35,6 +35,11 @@ class AdvertiseController extends Controller
         $date = Carbon::now()->startOfDay();
         $posts = Advertise::where('expires_at', '>=', $date)->paginate(1);
 
+        foreach ($posts as $post) {
+            $category = Category::where('id', $post->category_id)->first();
+            $post->category_name = $category->name;
+        }
+
         return Inertia('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
@@ -48,6 +53,12 @@ class AdvertiseController extends Controller
     {
         $date = Carbon::now()->startOfDay();
         $posts = Advertise::where('expires_at', '>=', $date)->paginate(2);
+
+        foreach ($posts as $post) {
+            $post->slug = asset($post->slug);
+            $category = Category::where('id', $post->category_id)->first();
+            $post->category_name = $category->name;
+        }
 
         return Inertia('AllPosts', compact('posts'));
     }
@@ -64,6 +75,8 @@ class AdvertiseController extends Controller
 
         foreach ($posts as $post) {
             $post->slug = asset($post->slug);
+            $category = Category::where('id', $post->category_id)->first();
+            $post->category_name = $category->name;
         }
 
         return Inertia('Search', compact(['posts', 'term']));
@@ -73,6 +86,11 @@ class AdvertiseController extends Controller
     {
         $MyPosts = Advertise::where('user_id', '=', Auth::id())->paginate(2);
 
+        foreach ($MyPosts as $post) {
+            $post->slug = asset($post->slug);
+            $category = Category::where('id', $post->category_id)->first();
+            $post->category_name = $category->name;
+        }
         return Inertia('Dashboard', compact('MyPosts'));
     }
 
@@ -108,6 +126,9 @@ class AdvertiseController extends Controller
             $canEdit = true;
         }
         $singlepost->slug = asset($singlepost->slug);
+
+        $category = Category::where('id', $singlepost->category_id)->first();
+        $singlepost->category_name = $category->name;
 
         return Inertia::render('SingleAd', [
             'singlepost' => $singlepost,

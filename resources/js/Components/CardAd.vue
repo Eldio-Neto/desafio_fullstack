@@ -1,12 +1,14 @@
 <template title="CardAd">
-    <div @click="GoToSinglePost"
-        class="cursor-pointer max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow ">
+    <div @click="GoToSinglePost" class="cursor-pointer max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow ">
         <img :src="`${url}`" alt="" class="rounded-md w-full h-40 object-cover mb-4">
         <a>
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
                 {{ title }}
             </h5>
         </a>
+        <p class="mb-3 overflow-hidden text-ellipsis font-normal text-gray-700 ">
+            {{ category }}
+        </p>
         <p class="mb-3 overflow-hidden text-ellipsis font-normal text-gray-700 ">
             {{ description }}
         </p>
@@ -16,7 +18,7 @@
         </p>
         Preço
         <p class="mb-3 font-normal text-gray-700 ">
-            {{price }}
+            {{ price }}
         </p>
     </div>
 </template>
@@ -41,6 +43,7 @@ export default {
         postId: Number,
         date: String,
         price: String,
+        category: String
     },
     methods: {
         GoToSinglePost() {

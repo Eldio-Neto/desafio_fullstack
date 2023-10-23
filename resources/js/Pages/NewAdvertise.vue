@@ -16,17 +16,17 @@ const form = useForm({
     price: 0,
     expires: '',
     image: '',
-    category:''
+    category: ''
 });
 
 defineProps({
-    categories:[]
+    categories: Array
 })
 
 
 const validateDate = () => {
     let alert = document.getElementById('alertData');
-    
+
     // Verifica se a data está preenchida
     if (!expires._value.trim()) {
         alert.innerHTML = "Por favor, preencha a data";
@@ -72,7 +72,7 @@ const getFile = (event) => {
 
 function validateForm(form) {
     LimpaAlerts()
-    
+
     // Validação do título
     if (!form.title.trim()) {
         let alert = document.getElementById('alertTitle');
@@ -106,41 +106,41 @@ function validateForm(form) {
 }
 
 
-function LimpaAlerts(){
+function LimpaAlerts() {
     let alertTitle = document.getElementById('alertTitle');
     let alertDescription = document.getElementById('alertDescription');
     let alertPrice = document.getElementById('alertPrice');
     let alertCategory = document.getElementById('alertCategory');
-    alertData.innerHTML='';
-    alertDescription.innerHTML='';
-    alertPrice.innerHTML='';
-    alertCategory.innerHTML='';
+    alertData.innerHTML = '';
+    alertDescription.innerHTML = '';
+    alertPrice.innerHTML = '';
+    alertCategory.innerHTML = '';
 }
 
 const submit = async () => {
     if (validateDate()) {
-        if(validateForm(form)){
-                const formData = new FormData();
-                formData.append('image', file);
-                formData.append('title', form.title);
-                formData.append('desc', form.desc);
-                formData.append('price', form.price);
-                formData.append('expires', expires._value);
-                formData.append('category', form.category);
-        
-                try {
-                    router.post(route('newAdvertise'), formData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data', // Garante que o Laravel reconheça a requisição como um formulário de várias partes
-                        }
-                    })
-                } catch (error) {
-                    console.error('Erro ao enviar o formulário:', error);
-                }
-            } 
-        }else {
-                console.log('Erro de validação da data');
+        if (validateForm(form)) {
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('title', form.title);
+            formData.append('desc', form.desc);
+            formData.append('price', form.price);
+            formData.append('expires', expires._value);
+            formData.append('category', form.category);
+
+            try {
+                router.post(route('newAdvertise'), formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data', // Garante que o Laravel reconheça a requisição como um formulário de várias partes
+                    }
+                })
+            } catch (error) {
+                console.error('Erro ao enviar o formulário:', error);
             }
+        }
+    } else {
+        console.log('Erro de validação da data');
+    }
 };
 
 
@@ -157,44 +157,44 @@ const submit = async () => {
         <div class="">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                    
+
                     <form @submit.prevent="submit" enctype="multipart/form-data">
                         <div>
-                            <InputLabel for="title" value="Title" />
-                            <TextInput  maxlength="50" id="title" v-model="form.title" type="text" class="mt-1 block w-full" required
-                                autofocus />
-                                <h1 id="alertTitle" class="text-red-500"></h1>
+                            <InputLabel for="title" value="Titulo" />
+                            <TextInput maxlength="50" id="title" v-model="form.title" type="text" class="mt-1 block w-full"
+                                required autofocus />
+                            <h1 id="alertTitle" class="text-red-500"></h1>
                         </div>
 
                         <div class="mt-4 ">
-                            <InputLabel for="Description" value="Description" />
-                            <textarea maxlength="50" col=33 class="w-full resize-none" v-model="form.desc" placeholder="add multiple lines"
-                                id="desc" rows="10" cols="50"></textarea>
-                                <h1 id="alertDescription" class="text-red-500"></h1>
+                            <InputLabel for="Description" value="Descrição" />
+                            <textarea maxlength="50" col=33 class="w-full resize-none" v-model="form.desc" id="desc"
+                                rows="10" cols="50"></textarea>
+                            <h1 id="alertDescription" class="text-red-500"></h1>
                         </div>
 
                         <div class="mt-4 ">
-                            <InputLabel for="date" value="Expires at" />
+                            <InputLabel for="date" value="Valido até" />
                             <input type="date" v-model="expires">
                             <h1 id="alertData" class="text-red-500"></h1>
                         </div>
 
                         <div class="mt-4 ">
-                            <InputLabel for="date" value="Price" />
+                            <InputLabel for="date" value="Preço" />
                             <input type="number" min="0" v-model="form.price" step="0.01">
                             <h1 id="alertPrice" class="text-red-500"></h1>
                         </div>
 
                         <div class=" mt-4 ">
-                            <InputLabel for=" file" value="Photo" />
+                            <InputLabel for=" file" value="Foto" />
                             <input @change="getFile" type="file" accept="image/png, image/jpeg">
                             <h1 id="alertPhoto" class="text-red-500"></h1>
                         </div>
 
                         <div class=" mt-4 ">
-                            <InputLabel for=" file" value="Categories" />
+                            <InputLabel for=" file" value="Categoria" />
                             <select @change="alerta" v-model="form.category">
-                                <option  v-for="category in categories" :value="category.id">
+                                <option v-for="category in categories" :value="category.id">
                                     {{ category.name }}
                                 </option>
                             </select>
