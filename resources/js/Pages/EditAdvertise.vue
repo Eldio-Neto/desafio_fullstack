@@ -5,18 +5,18 @@
                Edite seu anuncio
             </h2>
         </template>
-        <teste :singlepost="singlepost" />        
+        <FormEditSave :singlepost="singlepost" :categories="categories"/>        
     </AppLayout>
 </template>
 
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import singleAd from '@/Components/SingleAdCard.vue'
-import teste from '@/Components/teste.vue'
+import FormEditSave from '@/Components/FormEditSave.vue'
 
 defineProps({
     singlepost: Object,
-    canEdit:Boolean
+    canEdit:Boolean,
+    'categories':Array
 })
 
 // alert(singlepost);

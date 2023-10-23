@@ -41,6 +41,8 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->timeZone = 'Asia/Singapore';
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

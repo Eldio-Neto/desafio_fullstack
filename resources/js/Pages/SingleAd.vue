@@ -7,7 +7,7 @@
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 break-words">
                 <div
                     class="">
                     <singleAd   
@@ -17,6 +17,7 @@
                     :date="singlepost.expires_at"
                     :title="singlepost.title" 
                     :postId="singlepost.id"
+                    :price="singlepost.price"
                     :description="singlepost.description"/>
                 </div>
             </div>

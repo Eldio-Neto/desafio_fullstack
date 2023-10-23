@@ -16,52 +16,34 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [AdvertiseController::class, 'index'])->name('home');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/menu', function () {
-        return Inertia::render('Menu');
-    })->name('menu');
-});
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    // Route::get('/dashboard', function () {
-    //     return Inertia::render('Dashboard');
-    // })->name('dashboard');
-
-    Route::get('/dashboard', [AdvertiseController::class, 'MyAdvertyse'])->name('dashboard');
-});
-
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/newAdvertise', function () {
-        return Inertia::render('NewAdvertise');
-    })->name('newAdvertise');
-
-    Route::post('/newAdvertise', [AdvertiseController::class, 'store'])->name('newAdvertise');
-    Route::get('/singleAd/{id}', [AdvertiseController::class, 'showSinglePost'])->name('singleAd');
-    Route::get('/advertise/editAd/{id}', [AdvertiseController::class, 'editAd'])->name('edit');
     
-    /* Usando Post para atualizar pois o laravel não recebe formdata via PUT */
-    Route::post('/advertise/editAd/{id}', [AdvertiseController::class, 'saveEditAd'])->name('editad');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    ])->group(function () {
+        Route::get('/dashboard', [AdvertiseController::class, 'MyAdvertyse'])->name('dashboard');
+    });
+    
+    
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    ])->group(function () {
+        Route::get('/newAdvertise', [AdvertiseController::class, 'newAdForm'])->name('newAdvertise');
+        Route::get('/allPosts', [AdvertiseController::class, 'allPosts'])->name('allPosts');
+        Route::post('/newAdvertise', [AdvertiseController::class, 'store'])->name('newAdvertise');
+        Route::get('/singleAd/{id}', [AdvertiseController::class, 'showSinglePost'])->name('singleAd');
+        Route::get('/advertise/editAd/{id}', [AdvertiseController::class, 'editAd'])->name('edit');
+        Route::get('/advertise/search/{term}', [AdvertiseController::class, 'searchByTerm'])->name('search');
+        Route::get('/menu', [AdvertiseController::class, 'showMenu'])->name('menu');
 
-});
+        /* Usando Post para atualizar pois o laravel não recebe formdata via PUT */
+        Route::post('/advertise/editAd/{advertise}', [AdvertiseController::class, 'saveEditAd'])->name('editad');
+        Route::delete('/advertise/delete/{advertise}', [AdvertiseController::class, 'deleteAd'])->name('deleteAd');
+
+    });
+
