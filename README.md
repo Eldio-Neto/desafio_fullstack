@@ -76,6 +76,8 @@ git clone  https://github.com/Eldio-Neto/desafio_fullstack.git
 
     ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/abcb3bfd-0801-4362-8c7d-0381ced0b766)
 
+12. A paginação acontece quando tem mais de 1 pagina.
+![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/fc6736ed-7937-41e8-be4d-cdf778c5ba9e)
 
 
     
