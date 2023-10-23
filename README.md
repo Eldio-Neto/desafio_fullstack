@@ -31,6 +31,9 @@ git clone  https://github.com/Eldio-Neto/desafio_fullstack.git
 3. Configurar o Env
     <p>Por padrão o projeto está com o env.example, basta copiar e renomear para .env.</p>
      <p>  ~ Alterar as informações do banco de dados e nome do schema </p>
+     <p>Ex:</p>
+     <p>  ~ cp .env.example .env</p>
+     <p>  ~ vi .env</p>
      <p>  ~ DB_DATABASE=desafio_fullstack</p>
      <p>  ~ DB_USERNAME=root</p>
      <p>  ~ DB_PASSWORD=123</p>
