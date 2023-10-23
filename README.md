@@ -57,27 +57,22 @@ git clone  https://github.com/Eldio-Neto/desafio_fullstack.git
    ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/da06934b-9c3f-4962-b5f0-17b191683143)
 
 2.  Criar anuncio, basta preencher o titulo, descrição, valor, categoria. A imagem é opcional.
-
     ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/d3e2719e-7c7d-4938-ae36-39956444844e)
 
-3. Após criar o anuncio você será redirecionado para o Dashboard de meus produtos
- 
+3. Após criar o anuncio você será redirecionado para o Dashboard de meus produtos 
     ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/d1635c52-29d1-462b-a8d5-96b77fdefe4c)
 
 4. Para deletar ou editar o Anuncio basta clicar no anuncio e aparecerá o card do anuncio com as opçoes para deletar ou editar (caso o anuncio seja seu)
-
     ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/1b624eed-2bbb-47d5-abf4-492fd2556793)
 
 5. A edição segue a mesma regra do Cadastro titulo, descrição, valor, categoria. A imagem é opcional.
-
    ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/87db31c7-11e7-4875-be20-4158492c0953)
 
 6. A Pesquisa trás Anuncios que tiverem a palavra [termo] em seu titulo ou descrição.
-
     ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/abcb3bfd-0801-4362-8c7d-0381ced0b766)
 
 7. A paginação acontece quando tem mais de 1 pagina.
-![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/fc6736ed-7937-41e8-be4d-cdf778c5ba9e)
+    ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/fc6736ed-7937-41e8-be4d-cdf778c5ba9e)
 
 
     
