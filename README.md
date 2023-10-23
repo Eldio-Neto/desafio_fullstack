@@ -49,11 +49,8 @@ git clone  https://github.com/Eldio-Neto/desafio_fullstack.git
 ## Testando o Projeto
 
 1. Para adicionar produtos faça login e clique em Menu.
-    <p>Pagina Inicial</p>
-   ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/3e6255f7-04b2-4525-85da-5353ecf33e2e)
-    <p>Dashboard - Meus produtos</p>
+   ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/3e6255f7-04b2-4525-85da-5353ecf33e2e)   
    ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/7501b3fe-c4fa-4d7f-9747-3e7a64851921)
-   <p>Menu Principal</p>
    ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/da06934b-9c3f-4962-b5f0-17b191683143)
 
 2.  Criar anuncio, basta preencher o titulo, descrição, valor, categoria. A imagem é opcional.
