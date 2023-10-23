@@ -13,7 +13,7 @@
 
 [Node >= 18 ](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-[Myslq >= 8](https://dev.mysql.com/downloads/installer/) or (https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04)
+[Myslq >= 8](https://dev.mysql.com/downloads/installer/) or [Myslq >= 8](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04)
 
 ## Clone o Projeto
 
@@ -30,21 +30,21 @@ git clone  https://github.com/Eldio-Neto/desafio_fullstack.git
 
 3. Configurar o Env
     <p>Por padrão o projeto está com o env.example, basta copiar e renomear para .env.</p>
-     <p>~ Alterar as informações do banco de dados e nome do schema </p>
-      <p>  ~ DB_DATABASE=desafio_fullstack</p>
-     <p>   ~ DB_USERNAME=root</p>
-      <p>  ~ DB_PASSWORD=123</p>
+     <p>  ~ Alterar as informações do banco de dados e nome do schema </p>
+     <p>  ~ DB_DATABASE=desafio_fullstack</p>
+     <p>  ~ DB_USERNAME=root</p>
+     <p>  ~ DB_PASSWORD=123</p>
 
-4. Abrir um terminal e executar comandos para start do laravel
-   <p> ~ cd desafio_fullstack </p>
-   <p> ~ php artisan key:generate</p>
-   <p> ~ php artisan storage:link</p>
-    <p>~ php artisan db:seed --class=CategorySeeder</p>
-    <p>~ php artisan serve</p>
-
-5. Abrir outro terminal e executar comandos para start do vue
-   <p> ~ cd desafio_fullstack </p>
-    <p>~ npm run dev</p>
-
+4. Abrir um terminal e executar comandos para start do laravel e Front-end
+    <p> ~ cd desafio_fullstack </p>
+    <p> ~ php artisan key:generate</p>
+    <p> ~ php artisan storage:link</p>
+    <p> ~ php artisan migrate</p>
+    <p> ~ php artisan db:seed --class=CategorySeeder</p>
+    <p> ~ npm run build</p>
+    <p> ~ php artisan serve</p>
 
 6. Acessar a link em que estiver rodando o laravel ex: (http://127.0.0.1:8000)
+
+8. Para adicionar produtos faça login e clique em Menu.
+    
