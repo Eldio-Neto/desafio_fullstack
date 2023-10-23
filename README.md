@@ -47,4 +47,27 @@ git clone  https://github.com/Eldio-Neto/desafio_fullstack.git
 6. Acessar a link em que estiver rodando o laravel ex: (http://127.0.0.1:8000)
 
 8. Para adicionar produtos faça login e clique em Menu.
+   ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/3e6255f7-04b2-4525-85da-5353ecf33e2e)
+   ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/7501b3fe-c4fa-4d7f-9747-3e7a64851921)
+   ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/da06934b-9c3f-4962-b5f0-17b191683143)
+
+9.  Criar anuncio, basta preencher o titulo, descrição, valor, categoria. A imagem é opcional.
+ ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/d3e2719e-7c7d-4938-ae36-39956444844e)
+
+10. Após criar o anuncio você será redirecionado para o Dashboard de meus produtos  
+![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/f37e9620-c5d7-4503-9cbf-bc63cf8bafed)
+
+11. Para deletar ou editar o Anuncio basta clicar no anuncio e aparecerá o card do anuncio com as opçoes para deletar ou editar (caso o anuncio seja seu)
+  ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/1b624eed-2bbb-47d5-abf4-492fd2556793)
+
+12. A edição segue a mesma regra do Cadastro titulo, descrição, valor, categoria. A imagem é opcional.
+   ![image](https://github.com/Eldio-Neto/desafio_fullstack/assets/97411284/87db31c7-11e7-4875-be20-4158492c0953)
+
+13. A Pesquisa trás Anuncios que tiverem a palavra [termo] em seu titulo ou descrição.
+    
+
+14. 
+
+
+
     
