@@ -6,7 +6,7 @@ import pagination from '@/Components/Pagination.vue'
 
 defineProps({
     posts: [],
-    term:String
+    term: String
 })
 
 </script>
@@ -14,11 +14,11 @@ defineProps({
 <template>
     <AppLayout title="Dashboard">
         <template #header>
-            <div class="flex justify-between">
+            <div class="lg:flex lg:justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                   Você pesquisou por: {{ term }}
+                    Você pesquisou por: {{ term }}
                 </h2>
-                <SearchBar/>
+                <SearchBar />
             </div>
         </template>
 
@@ -31,11 +31,9 @@ defineProps({
                     </div>
                 </div>
                 <div class="mt-5 flex">
-                    <pagination :links="posts.links" :current_page="posts.current_page"/>
+                    <pagination :links="posts.links" :current_page="posts.current_page" />
                 </div>
             </div>
         </div>
-
-
     </AppLayout>
 </template>
