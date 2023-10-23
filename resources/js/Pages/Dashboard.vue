@@ -30,7 +30,7 @@ defineProps({
                     </div>
                 </div>
                 <div class="mt-5 flex">
-                    <pagination :links="MyPosts.links" />
+                    <pagination :links="MyPosts.links" :current_page="MyPosts.current_page"/>
                 </div>
             </div>
         </div>
