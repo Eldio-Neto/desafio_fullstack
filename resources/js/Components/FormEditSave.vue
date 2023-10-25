@@ -192,7 +192,7 @@ const submit = async () => {
             formData.append('category', form.category);
 
             try {
-                router.post(route('newAdvertise'), formData, {
+                router.post(route('editad', props.singlepost.id), formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data', // Garante que o Laravel reconheça a requisição como um formulário de várias partes
                     }

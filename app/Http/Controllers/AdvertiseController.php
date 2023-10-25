@@ -40,6 +40,8 @@ class AdvertiseController extends Controller
             $post->category_name = $category->name;
         }
 
+
+
         return Inertia('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
@@ -103,15 +105,25 @@ class AdvertiseController extends Controller
             $imagePath = "src/images/default.jpg";
         }
 
-        Advertise::create([
-            "title" => $request->input('title'),
-            "slug" =>  $imagePath ?? '',
-            "price" => $request->input('price'),
-            "expires_at" => $request->input('expires'),
-            "description" => $request->input('desc'),
-            "user_id" => Auth::id(),
-            "category_id" => $request->category
+        $validated = $request->validate([
+            'title' => 'required|max:50',
+            'price' => 'required',
+            'expires' => 'required',
+            'desc' => 'required|max:200',
+            'category' => 'required',
         ]);
+
+        if ($validated) {
+            Advertise::create([
+                "title" => $request->input('title'),
+                "slug" =>  $imagePath ?? '',
+                "price" => $request->input('price'),
+                "expires_at" => $request->input('expires'),
+                "description" => $request->input('desc'),
+                "user_id" => Auth::id(),
+                "category_id" => $request->category
+            ]);
+        }
 
         return redirect('/dashboard');
     }
@@ -153,24 +165,39 @@ class AdvertiseController extends Controller
     {
 
         if ($advertise->user_id == Auth::id()) {
-            $array = [
-                "title" => trim($request->title),
-                "description" => trim($request->description),
-                "price" => trim($request->price),
-                "expires_at" => trim($request->expires_at)
-            ];
 
 
-            if ($request->hasFile('image')) {
-                $array['slug'] = $imagePath = "storage/" . $request->file('image')->store('images', 'public');
+            $validated = $request->validate([
+                'title' => 'required|max:50',
+                'price' => 'required',
+                'expires' => 'required',
+                'desc' => 'required|max:200',
+                'category' => 'required',
+            ]);
 
-                if ($advertise->slug != "src/images/default.jpg") {
-                    unlink($advertise->slug);
+
+
+            if ($validated) {
+                $array = [
+                    "title" => trim($request->title),
+                    "description" => trim($request->desc),
+                    "price" => trim($request->price),
+                    "expires_at" => trim($request->expires),
+                    'category_id' => trim($request->category),
+                ];
+
+
+                if ($request->hasFile('image')) {
+                    $array['slug'] =  "storage/" . $request->file('image')->store('images', 'public');
+
+                    if ($advertise->slug != "src/images/default.jpg") {
+                        unlink($advertise->slug);
+                    }
                 }
-            }
 
-            $advertise->update($array);
-            $advertise->slug = asset($advertise->slug);
+                $advertise->update($array);
+                $advertise->slug = asset($advertise->slug);
+            }
 
             return to_route('singleAd', ["id" => $advertise->id]);
         }
